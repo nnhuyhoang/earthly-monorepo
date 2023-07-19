@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/earthly/earthly/examples/go-monorepo/libs/hello"
 	"github.com/labstack/echo/v4"
+	"github.com/nnhuyhoang/earthly-monorepo/libs/hello"
 )
 
 func main() {

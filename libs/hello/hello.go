@@ -8,5 +8,5 @@ import (
 
 func Greet(audience string) string {
 	_ = uuid.New()
-	return fmt.Sprintf("Hello, %s!", audience)
+	return fmt.Sprintf("Hello man, %s!", audience)
 }

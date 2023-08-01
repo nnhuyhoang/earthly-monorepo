@@ -6,12 +6,21 @@ all-unit-test:
     BUILD ./services/two+unit-test
 
 all-docker:
-    BUILD ./services/one+docker
-    BUILD ./services/two+docker
-
-all-release:
     BUILD ./services/one+release
     BUILD ./services/two+release
+
+all-release-tag:
+    FROM golang:1.17-alpine
+    RUN go install github.com/maykonlf/semver-cli/cmd/semver@v1.0.2
+    COPY .semver.yaml .
+    RUN semver get release > version
+    SAVE ARTIFACT version
+
+all-release:
+    FROM +all-docker
+    COPY +all-release-tag/version .
+    ARG VERSION="$(cat version)"
+    SAVE IMAGE --push service:$VERSION
 
 dev-up:
     LOCALLY

@@ -27,7 +27,7 @@ release-tag:
     RUN go install github.com/maykonlf/semver-cli/cmd/semver@v1.0.2
     COPY .semver.yaml .
     RUN semver get release > version
-    SAVE ARTIFACT version
+    SAVE ARTIFACT version-one
 
 release:
     FROM +docker

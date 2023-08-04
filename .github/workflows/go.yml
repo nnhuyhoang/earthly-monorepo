@@ -20,7 +20,7 @@ jobs:
           go-version: ${{matrix.go-version}}
       - name: Running test
         run: |
-          pwd
+          ls
           go test ./libs/hello --json > TestResults-hello-${{matrix.go-version}}.json
           go test ./services/one --json > TestResults-one-${{matrix.go-version}}.json
           go test ./services/two --json > TestResults-two-${{matrix.go-version}}.json

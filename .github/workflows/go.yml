@@ -20,9 +20,11 @@ jobs:
           go-version: ${{matrix.go-version}}
       - name: Running test
         run: |
+          pwd
           go test ./libs/hello --json > TestResults-hello-${{matrix.go-version}}.json
           go test ./services/one --json > TestResults-one-${{matrix.go-version}}.json
           go test ./services/two --json > TestResults-two-${{matrix.go-version}}.json
+
       - name: Upload Go test results
         uses: actions/upload-artifact@v3
         with:
